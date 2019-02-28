@@ -1,0 +1,30 @@
+@model List<Student>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.FirstName</td>
+                <td>@s.MiddleName</td>
+                <td>@s.LastName</td>
+                <td>
+                    <a asp-action="Details" asp-controller="Student" asp-route-id="@s.Id">View Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@await Html.PartialAsync("_Pagination",10)
